@@ -1,0 +1,61 @@
+Part 1: Setup and Initialization
+
+This part of the code sets up the necessary variables and constants for the LED cube. It includes the SPI library for 
+communication with the SN74HC595N IC and defines constants for various parameters such as the axes, direction, pin numbers, 
+effect types, and timing for effects. The characters array stores the binary representation of the numbers 0-9, which can be 
+displayed on the LED cube. The cube array represents the current state of the LED cube. The currentEffect variable stores the 
+current display mode of the LED cube. The timer and randomTimer variables are used for timing control in the different display 
+modes. The autoRotate, lastEffectChange, and effectDuration variables are used to control the automatic rotation of the display
+modes. The loading variable is a flag used to indicate whether the cube is currently loading a new effect. The setup() function 
+initializes the SPI communication, sets the pin modes, and initializes other variables.
+
+Part 2: Main Loop and Effect Functions
+
+This part of the code contains the main loop that runs continuously on the Arduino. It checks if the button has been pressed 
+or if it’s time to change the effect (based on effectDuration and autoRotate). If so, it resets some variables, increments 
+currentEffect, and resets the cube. The switch statement calls the appropriate function based on the current effect. The renderCube() 
+function sends the current state of the cube to the LEDs using SPI communication. Each effect function checks if it’s loading, and if 
+so, it initializes the effect. Then it updates the effect based on a timer.
+
+The effect functions (rain(), planeBoing(), sendVoxels(), woopWoop(), cubeJump(), glow()) each create a different visual effect on the 
+LED cube. They control the state of the LEDs in the cube to create patterns like rain falling, a plane bouncing back and forth, voxels
+being sent from one side to the other, a cube expanding and shrinking, a cube jumping around, and LEDs randomly turning on and off to
+create a glow effect.
+
+
+
+
+The #include <SPI.h> line includes the SPI library, which allows the Arduino to communicate with the SN74HC595N IC over the Serial Peripheral Interface (SPI).
+
+The #define lines are creating constants for various parameters such as the axes, direction, pin numbers, effect types, and timing for effects.
+
+The characters array stores the binary representation of the numbers 0-9, which can be displayed on the LED cube.
+
+The cube array represents the current state of the LED cube.
+
+The currentEffect variable stores the current display mode of the LED cube.
+
+The timer and randomTimer variables are used for timing control in the different display modes.
+
+The autoRotate, lastEffectChange, and effectDuration variables are used to control the automatic rotation of the display modes.
+
+The loading variable is a flag used to indicate whether the cube is currently loading a new effect.
+
+The setup() function initializes the SPI communication, sets the pin modes, and initializes other variables.
+
+The loop() function is the main function that runs continuously on the Arduino. It checks if the button has been pressed or if it’s time to change the effect (based on effectDuration and autoRotate). If so, it resets some variables, increments currentEffect, and resets the cube.
+
+The switch statement calls the appropriate function based on the current effect.
+The renderCube() function sends the current state of the cube to the LEDs using SPI communication.
+
+The rain() function creates a rain effect by shifting all the LEDs down and randomly turning on LEDs at the top.
+
+The planeBoing() function creates a plane boing effect by moving a plane of LEDs back and forth.
+
+The sendVoxels() function sends voxels (3D pixels) from one side of the cube to the other.
+
+The woopWoop() function creates a woop woop effect by expanding and shrinking a cube of LEDs.
+
+The cubeJump() function creates a cube jump effect by moving a cube of LEDs around.
+
+The glow() function creates a glow effect by randomly turning on and off LEDs.
